@@ -1,0 +1,563 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+	<link rel="icon" sizes="16x16" href="image/icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	
+	  <style>
+	  
+.popup-overlayemail {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+}
+
+.popup-outside {
+margin: 20px auto;
+border-collapse: collapse; 
+max-width: 900px; 
+width: 100%; 
+background-color: #f1f1f1; 
+border-radius: 10px; 
+padding: 20px;
+}
+
+		.popup-contentemail {
+		background-color: #918991; 
+		width: 100%;
+		border-radius: 8px; 
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+		font-family: 'Century Gothic', sans-serif;
+		}
+
+		buttonemail {
+		background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+		}
+
+		.trigger-buttonemail {
+			cursor: pointer;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 7px;
+			right: 27px;
+			font-size: 50px;
+			font-weight: bold;
+			color: white;
+			cursor: pointer;
+			padding: 5px;
+			z-index: 1001; 
+		}
+
+		.close-btn:hover {
+			color: #918991;
+		}
+	  
+	.containerv {
+  align-items: center;
+  max-width: 1100px;
+  height: 450px;
+  margin: 0 auto;
+  margin-top: 70px;
+  padding: 10px 15px;
+  flex: 1;
+  }
+	  
+  .containerq {
+  align-items: center;
+  max-width: 1100px;
+  height: 350px;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding: 15px 15px;
+  border: 2px solid black;
+  	background: #f2f2f2;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	flex: 1;
+  }
+  
+.quiz-containerq {
+  display: flex;
+  justify-content: space-between; /* Optional: space them out */
+  width: 100%;
+  height: 350px;
+padding: 20px 0;          /* Optional: vertical padding */
+  box-sizing: border-box;  
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-right: 40px;      /* Space between left and right */
+  box-sizing: border-box;
+}
+
+.left {
+align-items: right;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;      /* Space between left and right */
+  box-sizing: border-box;
+  gap: 12px;
+  padding-top: 15px;
+  }
+  
+  .left video {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;    /* This makes the video fill the containerq */
+  border: 7px solid #9610ad;
+  border-radius: 16px;  /* Optional: for rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Optional */
+  display: block;
+}
+
+.right {
+flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-right: 50px;      /* Space between left and right */
+  box-sizing: border-box;
+}
+
+
+.right-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* Remove padding/margin if any */
+  height: 90%;
+  padding: 15px;
+}
+
+.right-section video {
+  width: 100%;
+  height: 100%;
+  object-fit: fit;    /* This makes the video fill the containerq */
+  border: 7px solid #9610ad;
+  border-radius: 16px;  /* Optional: for rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Optional */
+  display: block;
+}
+
+  h4 {
+  margin-top: 15px; 
+  margin-bottom: 8px; /* Reduce space below h4, adjust as needed */
+  font-size: 48px;
+  margin-left: 50px;
+  font-family: 'Montserrat', Arial, sans-serif;
+font-weight: 800; /* or 900 for Black */
+color: #666666;
+line-height: 1.1;
+  }
+  
+  p4 {
+  margin-top: 0;      /* Remove space above p */
+  font-family: 'Roboto', Arial, sans-serif;
+font-size: 20px; /* Approximate size */
+font-weight: 400;
+color: #666666;  /* Approximate gray */
+  margin-left: 50px;
+  text-align: justify;
+}
+	
+	.quizvideo {
+	  align-items: center;
+	  width: 100%;
+	  height: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+	flex: 1;
+	}
+	
+	.quizvideo video {
+	object-fit: fill;
+	width: 100%;
+	height: 100%;
+	border: 7px solid white;
+  border-radius: 16px;  /* Optional: for rounded corners */
+	}
+	
+	.quiz-item {
+  color: #cf5de3;
+  transition: color 0.3s ease;
+}
+
+.quiz-item:hover {
+  color: #9610ad;
+}
+
+.linez {
+margin-top: 20px;
+margin-bottom: 0 px;
+margin-left: 50px;
+	position: relative;
+	width: 90%;
+	height:6px;
+	background: #666666;
+	}
+	
+	.linez::before
+	{
+	content:"";
+	position: absolute;
+	width:100%;
+	height:100%;
+	background: #cf5de3;
+	transform-origin: left;
+	animation: animate 4.5s linear infinite;
+	}
+	
+	@keyframes animate
+	{
+		0%,20%
+		{
+			transform: scaleX(0);
+		}
+		40%
+		{
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+		40.000001%,60%
+		{
+			transform: scaleX(1);
+			transform-origin: right;
+		}
+		80%,100%
+		{
+			transform: scaleX(0);
+			transform-origin: right;
+		}
+	}
+	
+		
+		
+  </style>
+</head>
+
+	<body>
+	
+			<!-- Background Music -->
+			<audio id="bgMusic" muted autoplay loop>
+			  <source src="sound/space.mp3" type="audio/mpeg">
+			</audio>
+			
+		<header>
+			<a href="home.html" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<ul class="navlist">
+					<li class="lilink"><a href="home.html" class="nav-item">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item active">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+				
+				<div class="right-side">
+<buttonemail onclick="showPopup()" class="trigger-buttonemail">Reach Us!</buttonemail>
+	<div id="popupemailform" class="popup-overlayemail">
+	<div class="popup-outside">
+	<div class="popup-contentemail">
+	<span class="close-btn" onclick="closePopupemail()">&times;</span>
+		
+		<table border="0">
+		<tr>
+		<td style="padding: 20px; width: 50%; vertical-align: top;">
+		<h2 style="margin-bottom: 20px; text-align: center; color: #f1f1f1; font-family: 'Century Gothic', sans-serif;">Send a message</h2>
+						<div>
+							<form name="form1" method="post" action="mailto:nuramiraraihanaa.gmail.com">
+								<div style="margin-bottom: 15px;">
+									<label for="first-name"><strong>Name:</strong></label>
+									<input type="text" id="first-name" name="name" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="phone"><strong>Phone:</strong></label>
+									<input type="text" id="phone" name="phone" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+									<div style="margin-bottom: 15px;">
+									<label for="email"><strong>Email:</strong></label>
+									<input type="text" id="email" name="email" style="width: calc(100% - 10px);">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="state"><strong>Your Current State:</strong></label>
+									<select id="state" name="state" style="width: 100%;">
+										<option value="KL">Kuala Lumpur</option>
+										<option value="Sel">Selangor</option>
+										<option value="Ter">Terengganu</option>
+										<option value="PP">Pulau Pinang</option>
+										<option value="Per">Perak</option>
+										<option value="Joh">Johor</option>
+										<option value="Ked">Kedah</option>
+										<option value="Pah">Pahang</option>
+										<option value="Sar">Sarawak</option>
+										<option value="Sab">Sabah</option>
+										<option value="N. Sem">Negeri Sembilan</option>
+										<option value="Kel">Kelantan</option>
+										<option value="Mel">Melaka</option>
+										<option value="Per">Perlis</option>
+									</select>
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="subject"><strong>Subject:</strong></label><br>
+									<textarea id="subject" name="subject" rows="5" style="width: 100%;"></textarea>
+								</div>
+								<div style="text-align: center;">
+									<input id="submit" name="submit" type="submit" value="Submit" style="
+										background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+									">
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</div>
+			</div>
+			</div>
+			</div>
+		</header>
+	
+		
+	<!---------------Quiz----------------->
+	
+	<div class="containerv" id="quiz">
+	<div class="quizvideo">
+	<video autoplay muted loop>
+	<source src="video/quizzez.mp4" type="video/mp4">
+	</video>
+	</div>
+	</div>
+	
+	<div class="containerq">
+  <div class="quiz-containerq">
+  <div class="left-section">
+	
+  
+  <div class="linez"></div>
+  
+   <h4><a href="https://wordwall.net/resource/16606021/science-of-planets/planets-maze-chase" target="_blank" class="quiz-item">The Maze Chase</a></h4>
+
+  <p4>Run to the correct answer zone, whilst avoiding the enemies. Players have to move through a space maze to reach the correct planet answer while avoiding enemies such as asteroids and alien ships that try to block them. </p4>
+  
+  <div class="linez"></div>
+  </div>
+  <div class="right-section">
+  <a href="https://wordwall.net/resource/16606021/science-of-planets/planets-maze-chase" target="_blank" rel="noopener noreferrer">
+    <video autoplay muted loop>
+      <source src="video/quiz1.mp4" type="video/mp4">
+    </video>
+		</a>
+  </div>
+  </div>
+  </div>
+  
+  
+  	<div class="containerq">
+	<div class="quiz-containerq">
+	<div class="left">
+	<a href="https://www.beano.com/quiz/science/the-ultimate-planets-quiz#162397" target="_blank" rel="noopener noreferrer">
+    <video autoplay muted loop>
+      <source src="video/quiz2.mp4" type="video/mp4">
+    </video>
+		</a>
+	</div>
+	
+	<div class="right">
+	
+	
+
+  
+ <div class="linez"></div>
+	<h4><a href="https://www.beano.com/quiz/science/the-ultimate-planets-quiz#162397" target="_blank" class="quiz-item">The Ultimate Planets Quiz</a></h4>
+  <p4>This quiz will challenge your planetary knowledge and maybe even teach you something new. Ready to find out if you’re a true planet expert or a cosmic newbie?</p4>
+  <div class="linez"></div>
+  </div>
+</div>
+</div>
+	
+	
+	  <div class="containerq" style="margin-bottom: 20px;">
+  <div class="quiz-containerq">
+  <div class="left-section">
+  <div class="linez"></div>
+ <h4><a href="https://www.silvergames.com/en/solar-system-order-the-planets" target="_blank" class="quiz-item">Planets In Order</a></h4>
+  <p4>Dive into the wonders of space with Solar System: Planets in Order, an interactive and educational game that challenges you to arrange the eight planets in their correct order from the Sun. Play now and see if you can get the order just right!</p4>
+  <div class="linez"></div>
+  </div>
+  <div class="right-section">
+  <a href="https://www.silvergames.com/en/solar-system-order-the-planets" target="_blank" rel="noopener noreferrer">
+    <video autoplay muted loop>
+      <source src="video/quiz3.mp4" type="video/mp4">
+    </video>
+		</a>
+  </div>
+  </div>
+  </div>
+
+	
+	
+	
+	
+	
+	<!---------------Footer----------------->
+	<footer>
+		<div class="container-foot">
+			<div class="leftBox">
+				<a href="#" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<p>Our mission is to help young learners explore and understand the galaxy in a fun, easy, and stress-free way. We aim to make learning about space exciting and enjoyable, so every student can gain knowledge with a smile.</p>
+				<ul class="social-media">
+					<li><a href="#"><i class='bx bxl-instagram-alt'></i></a></li>
+					<li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+					<li><a href="#"><i class='bx bxl-tiktok'></i></a></li>
+				</ul>
+			</div>
+		
+			<div class="centerBox">
+				<h3 class="title">Quick Links</h3>
+				<ul class="quick-menu">
+					<li class="lilink"><a href="home.html" class="nav-item">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+			</div>
+			
+			<div class="centerBox">
+				<h3 class="title">Contact Us</h3>
+					<ul class="info">
+					  <li>
+						<a href="#"><i class='bx bxs-phone'></i> +60 19-836-7334</a>
+					  </li>
+					  <li>
+						<a href="#"><i class='bx bxs-envelope'></i> kidtopia@gmail.com</a>
+					  </li>
+					</ul>
+			</div>
+		</div>
+	</footer>
+	
+	<!---------------CopyRight----------------->
+	<div class="copyRight"> 
+	  <p>Copyright &copy; 2025 by kidtopia || All Rights Reserved.</p>
+	  <a href="#quiz" style="
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: var(--hover-color);
+		padding: 10px;
+		color: #000;
+		text-decoration: none;
+	  ">
+		<i class="bx bx-up-arrow-alt"></i>
+	  </a>
+	</div>
+
+<!---------------Reach Us button----------------->
+<script>
+	function togglePopup() {
+    const overlay = document.getElementById('popup-overlayemail');
+    if (overlay.style.display === "none" || !overlay.style.display) {
+        overlay.style.display = "flex";
+    } else {
+        overlay.style.display = "none";
+    }
+}
+
+function showPopup() {
+    document.getElementById('popupemailform').style.display = 'flex';
+}
+
+function closePopupemail() {
+    document.getElementById('popupemailform').style.display = 'none';
+}
+
+// Add event listener for the close button
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.querySelector('.close-btn');
+    closeBtn.addEventListener('click', closePopup);
+});
+</script>
+	
+	<script>
+	  const currentPage = location.pathname.split("/").pop(); // e.g., 'quiz.html'
+	  document.querySelectorAll("header .nav-item").forEach(link => {
+		if (link.getAttribute("href") === currentPage) {
+		  link.classList.add("active");
+		}
+	  });
+	</script>
+	
+<!---------------Scroll animation----------------->
+	<script>
+		const observer = new IntersectionObserver((entries)=>{
+			entries.forEach((entry)=>{
+				if(entry.isIntersecting){
+					entry.target.classList.add("show-items");
+				}else{
+					entry.target.classList.remove("show-items");
+				}
+			});
+		});
+			
+		const scrollLeft = document.querySelectorAll(".scroll-left");
+		scrollLeft.forEach((el)=>observer.observe(el));
+		
+		const scrollRight = document.querySelectorAll(".scroll-right");
+		scrollRight.forEach((el)=>observer.observe(el));
+		
+		const scrollTop = document.querySelectorAll(".scroll-top");
+		scrollTop.forEach((el)=>observer.observe(el));
+		
+		const scrollBottom = document.querySelectorAll(".scroll-bottom");
+		scrollBottom.forEach((el)=>observer.observe(el));
+	</script>
+	
+		<script>
+  // Enable audio after user interaction (needed for autoplay with sound)
+  window.addEventListener('click', () => {
+    bgMusic.muted = false;
+    bgMusic.volume = 0.7; // Set volume (0 = silent, 1 = full)
+    bgMusic.play();
+  }, { once: true });
+	</script>
+
+</body>
+</html>
