@@ -1,0 +1,456 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy</title>
+	<link rel="icon" sizes="16x16" href="image/icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	
+	<style>
+	.popup-overlayemail {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+}
+
+.popup-outside {
+margin: 20px auto;
+border-collapse: collapse; 
+max-width: 900px; 
+width: 100%; 
+background-color: #f1f1f1; 
+border-radius: 10px; 
+padding: 20px;
+}
+
+		.popup-contentemail {
+		background-color: #918991; 
+		width: 100%;
+		border-radius: 8px; 
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+		font-family: 'Century Gothic', sans-serif;
+		}
+
+		buttonemail {
+		background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+		}
+
+		.trigger-buttonemail {
+			cursor: pointer;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 7px;
+			right: 27px;
+			font-size: 50px;
+			font-weight: bold;
+			color: white;
+			cursor: pointer;
+			padding: 5px;
+			z-index: 1001; 
+		}
+
+		.close-btn:hover {
+			color: #918991;
+		}
+		</style>
+</head>
+<body>
+		<!-- Background Music -->
+		<audio id="bgMusic" muted autoplay loop>
+		  <source src="sound/space.mp3" type="audio/mpeg">
+		</audio>
+		<!-- Include Google Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+		
+
+		<body>
+		<header>
+			<a href="home.html" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<ul class="navlist">
+					<li class="lilink"><a href="home.html" class="nav-item active">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+				
+				<div class="right-side">
+<buttonemail onclick="showPopup()" class="trigger-buttonemail">Reach Us!</buttonemail>
+	<div id="popupemailform" class="popup-overlayemail">
+	<div class="popup-outside">
+	<div class="popup-contentemail">
+	<span class="close-btn" onclick="closePopupemail()">&times;</span>
+		
+		<table border="0">
+		<tr>
+		<td style="padding: 20px; width: 50%; vertical-align: top;">
+		<h2 style="margin-bottom: 20px; text-align: center; color: #f1f1f1; font-family: 'Century Gothic', sans-serif;">Send a message</h2>
+						<div>
+							<form name="form1" method="post" action="mailto:nuramiraraihanaa.gmail.com">
+								<div style="margin-bottom: 15px;">
+									<label for="first-name"><strong>Name:</strong></label>
+									<input type="text" id="first-name" name="name" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="phone"><strong>Phone:</strong></label>
+									<input type="text" id="phone" name="phone" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+									<div style="margin-bottom: 15px;">
+									<label for="email"><strong>Email:</strong></label>
+									<input type="text" id="email" name="email" style="width: calc(100% - 10px);">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="state"><strong>Your Current State:</strong></label>
+									<select id="state" name="state" style="width: 100%;">
+										<option value="KL">Kuala Lumpur</option>
+										<option value="Sel">Selangor</option>
+										<option value="Ter">Terengganu</option>
+										<option value="PP">Pulau Pinang</option>
+										<option value="Per">Perak</option>
+										<option value="Joh">Johor</option>
+										<option value="Ked">Kedah</option>
+										<option value="Pah">Pahang</option>
+										<option value="Sar">Sarawak</option>
+										<option value="Sab">Sabah</option>
+										<option value="N. Sem">Negeri Sembilan</option>
+										<option value="Kel">Kelantan</option>
+										<option value="Mel">Melaka</option>
+										<option value="Per">Perlis</option>
+									</select>
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="subject"><strong>Subject:</strong></label><br>
+									<textarea id="subject" name="subject" rows="5" style="width: 100%;"></textarea>
+								</div>
+								<div style="text-align: center;">
+									<input id="submit" name="submit" type="submit" value="Submit" style="
+										background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+									">
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</div>
+			</div>
+			</div>
+			</div>
+				
+		</header>
+		
+		<!-- index sention -->
+		<section id="home" class="home">
+			<div class="home-text scroll-left"> 
+			  <h1><span>Kidtopia : </span>Explore the Planets</h1>
+			  <a href="#" class="marsBtn">Start Your Journey</a>
+			</div>
+
+			
+			<div class="home-img">
+				<img src="image/hero.png" alt="" class="hero">
+				<img src="image/light-moon.png" alt="" class="moon-light">
+			</div>
+			
+			<div class="earth-rotate">
+				<img src="image/earthPlanet.png" alt="" class="earth">
+			</div>
+		</section>
+			
+		<!-- Card Images -->
+	<div class="container">
+		<div class="card scroll-top">
+			<a href="planets.html">
+				<img src="image/planet.jpg" alt="Card Image 1">
+				<div class="card-text">Planets</div>
+			</a>
+		</div>
+		<div class="card scroll-bottom">
+			<a href="news.html">
+				<img src="image/News.jpg" alt="Card Image 2">
+				<div class="card-text">News</div>
+			</a>
+		</div>
+		<div class="card scroll-top">
+			<a href="quiz.html">
+				<img src="image/Quiz.jpg" alt="Card Image 3">
+				<div class="card-text">Quiz</div>
+			</a>
+		</div>
+		<div class="card scroll-bottom">
+			<a href="about.html">
+				<img src="image/about.jpg" alt="Card Image 4">
+				<div class="card-text">About Us</div>
+			</a>
+		</div>
+	</div>
+	
+	
+	<!-- Card Images -->
+	<section id="mission-history" class="mission-history"> 
+		<div class="img-mission scroll-left">
+			<div class="circle-animate">
+				<span style="--i:0;"></span>
+				<span style="--i:1;"></span>
+				<span style="--i:2;"></span>
+				<span style="--i:3;"></span>
+			</div>
+			<img src="image/Spaceship.png" alt="">
+		</div>
+		
+		<div class="text-mission scroll-right">
+			<h3>Our History: Reaching for the Stars!</h3>
+			<p>It all started with a dream — to fly beyond the clouds and explore the magic of outer space! 🪐✨<br>
+				From building our very first cardboard rocket to launching the fastest space shuttle on Earth, our journey has been full of fun, teamwork, and amazing discoveries!
+			</p>
+			<a href="#" class="marsBtn" style="margin-left: -180px;">Join Our Adventure!</a>
+		</div>
+	</section>
+	
+	<section class="youtube-section">
+	  <h2 class="section-title" style="color: #302f32">🎵 Explore Music Videos</h2>
+
+  <!-- Kindergarten Section -->
+  <h3 class="sub-title" style="color: #3f3c56"> For Kindergarten</h3>
+	  <div class="video-gallery-wrapper">
+		<button class="scroll-btn left" onclick="scrollGallery('videoGalleryKindergarten', -1)">&#10094;</button>
+		<div class="video-gallery" id="videoGalleryKindergarten">
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/PCxjuDePdCI?si=a5TlvP_PeM_fIQwG" allowfullscreen></iframe>
+			<p class="video-title">The Planets of our Solar System Song</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/Syx3oma-od4?si=9ZqTruyuFy1oeGXQ" allowfullscreen></iframe>
+			<p class="video-title">Eight Planets|Pinkfong Songs for Children</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/QU3IjEZ-cwQ?si=RHP3IaTbSdncJSTe" allowfullscreen></iframe>
+			<p class="video-title">Little Space Explorers|Pinkfong Chart Show</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/beDSePVqWY0?si=GEhP85o4I9YzDqgW" allowfullscreen></iframe>
+			<p class="video-title">Blippi Learns About Planets !</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/IJIBNAZ3_SI?si=W0nSuDJWZsx-_rOK" allowfullscreen></iframe>
+			<p class="video-title">Toddler Videos | Solar System for Kids </p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/5IKRLSwjwyk?si=_nPGYRmCXmYFwJQ9" allowfullscreen></iframe>
+			<p class="video-title">Eight Planets | Space Song | Pinkfong Songs</p>
+		  </div>
+		  <!-- Add more videos here -->
+		</div>
+		 <button class="scroll-btn right" onclick="scrollGallery('videoGalleryKindergarten', 1)">&#10095;</button>
+	  </div>
+	
+	<!-- Primary School Section -->
+  <h3 class="sub-title" style="color: #3f3c56"> For Primary School</h3>
+	  <div class="video-gallery-wrapper">
+		<button class="scroll-btn left" onclick="scrollGallery('videoGalleryPrimary', -1)">&#10094;</button>
+		<div class="video-gallery" id="videoGalleryPrimary">
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/MWlmg8Njg78?si=3lW-1bEjg8sWnqtQ" allowfullscreen></iframe>
+			<p class="video-title">Solar System for Kids | Planets for Kids</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/VymnSxtYl6E?si=Hu6RyswO9ExrWVI0" allowfullscreen></iframe>
+			<p class="video-title">8 planets song rap - song by ZooZooSong</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/4ddVk0jobJQ?si=8Kncoa21AJMwqMvF" allowfullscreen></iframe>
+			<p class="video-title">🪐PLANET PARTY! Solar System Song</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/cXKiR3Hroo4?si=XVGz_Dz8dNpH6TZL" allowfullscreen></iframe>
+			<p class="video-title">Learn About Meteors and Asteroids </p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/mx0m7_gRD6g?si=i_I5MDiyintD3CMu" allowfullscreen></iframe>
+			<p class="video-title">The Solar System | Rhymes by Snoop Dogg</p>
+		  </div>
+		  <div class="video-card">
+			<iframe src="https://www.youtube.com/embed/sePqPIXMsAc?si=GsC_E06OEdeBWLlG" allowfullscreen></iframe>
+			<p class="video-title">Our Sun | Science videos for kids </p>
+		  </div>
+		  <!-- Add more videos here -->
+		</div>
+		 <button class="scroll-btn right" onclick="scrollGallery('videoGalleryPrimary', 1)">&#10095;</button>
+	  </div>
+	</section>
+
+
+	
+	
+	<!---------------Footer----------------->
+	<footer>
+		<div class="container-foot">
+			<div class="leftBox">
+				<a href="#" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<p>Our mission is to help young learners explore and understand the galaxy in a fun, easy, and stress-free way. We aim to make learning about space exciting and enjoyable, so every student can gain knowledge with a smile.</p>
+				<ul class="social-media">
+					<li><a href="#"><i class='bx bxl-instagram-alt'></i></a></li>
+					<li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+					<li><a href="#"><i class='bx bxl-tiktok'></i></a></li>
+				</ul>
+			</div>
+		
+			<div class="centerBox">
+				<h3 class="title">Quick Links</h3>
+				<ul class="quick-menu">
+					<li class="lilink"><a href="home.html" class="nav-item">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+			</div>
+			
+			<div class="centerBox">
+				<h3 class="title">Contact Us</h3>
+					<ul class="info">
+					  <li>
+						<a href="#"><i class='bx bxs-phone'></i> +60 19-836-7334</a>
+					  </li>
+					  <li>
+						<a href="#"><i class='bx bxs-envelope'></i> kidtopia@gmail.com</a>
+					  </li>
+					</ul>
+			</div>
+		</div>
+	</footer>
+	
+	<!---------------CopyRight----------------->
+	<div class="copyRight"> 
+	  <p>Copyright &copy; 2025 by kidtopia || All Rights Reserved.</p>
+	  <a href="#home" style="
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: var(--hover-color);
+		padding: 10px;
+		color: #000;
+		text-decoration: none;
+	  ">
+		<i class="bx bx-up-arrow-alt"></i>
+	  </a>
+	</div>
+
+
+	<script>
+	function togglePopup() {
+    const overlay = document.getElementById('popup-overlayemail');
+    if (overlay.style.display === "none" || !overlay.style.display) {
+        overlay.style.display = "flex";
+    } else {
+        overlay.style.display = "none";
+    }
+}
+
+function showPopup() {
+    document.getElementById('popupemailform').style.display = 'flex';
+}
+
+function closePopupemail() {
+    document.getElementById('popupemailform').style.display = 'none';
+}
+
+// Add event listener for the close button
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.querySelector('.close-btn');
+    closeBtn.addEventListener('click', closePopup);
+});
+</script>
+
+	<script>
+	  const currentPage = location.pathname.split("/").pop(); // e.g., 'home.html'
+	  document.querySelectorAll("header .nav-item a").forEach(link => {
+		if (link.getAttribute("href") === currentPage) {
+		  link.classList.add("active");
+		}
+	  });
+	</script>
+
+
+	<!---------------Scroll animation----------------->
+	<script>
+		const observer = new IntersectionObserver((entries)=>{
+			entries.forEach((entry)=>{
+				if(entry.isIntersecting){
+					entry.target.classList.add("show-items");
+				}else{
+					entry.target.classList.remove("show-items");
+				}
+			});
+		});
+			
+		const scrollLeft = document.querySelectorAll(".scroll-left");
+		scrollLeft.forEach((el)=>observer.observe(el));
+		
+		const scrollRight = document.querySelectorAll(".scroll-right");
+		scrollRight.forEach((el)=>observer.observe(el));
+		
+		const scrollTop = document.querySelectorAll(".scroll-top");
+		scrollTop.forEach((el)=>observer.observe(el));
+		
+		const scrollBottom = document.querySelectorAll(".scroll-bottom");
+		scrollBottom.forEach((el)=>observer.observe(el));
+	</script>
+	
+	<script>
+	  function scrollGallery(galleryId, direction) {
+		const gallery = document.getElementById(galleryId);
+		const scrollAmount = 320; // adjust as needed
+		gallery.scrollBy({
+		  left: direction * scrollAmount,
+		  behavior: 'smooth'
+		});
+	  }
+	</script>
+
+	<script>
+  // Enable audio after user interaction (needed for autoplay with sound)
+  window.addEventListener('click', () => {
+    bgMusic.muted = false;
+    bgMusic.volume = 0.7; // Set volume (0 = silent, 1 = full)
+    bgMusic.play();
+  }, { once: true });
+	</script>
+	
+
+</body>
+</html>
