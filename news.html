@@ -1,0 +1,490 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+	<link rel="icon" sizes="16x16" href="image/icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	
+	<style>
+	.popup-overlayemail {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+}
+
+.popup-outside {
+margin: 20px auto;
+border-collapse: collapse; 
+max-width: 900px; 
+width: 100%; 
+background-color: #f1f1f1; 
+border-radius: 10px; 
+padding: 20px;
+}
+
+		.popup-contentemail {
+		background-color: #918991; 
+		width: 100%;
+		border-radius: 8px; 
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+		font-family: 'Century Gothic', sans-serif;
+		}
+
+		buttonemail {
+		background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+		}
+
+		.trigger-buttonemail {
+			cursor: pointer;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 7px;
+			right: 27px;
+			font-size: 50px;
+			font-weight: bold;
+			color: white;
+			cursor: pointer;
+			padding: 5px;
+			z-index: 1001; 
+		}
+
+		.close-btn:hover {
+			color: #918991;
+		}
+		</style>
+</head>
+
+		<body>
+		<header>
+			<a href="home.html" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<ul class="navlist">
+					<li class="lilink"><a href="home.html" class="nav-item">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item active">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+				
+				<div class="right-side">
+<buttonemail onclick="showPopup()" class="trigger-buttonemail">Reach Us!</buttonemail>
+	<div id="popupemailform" class="popup-overlayemail">
+	<div class="popup-outside">
+	<div class="popup-contentemail">
+	<span class="close-btn" onclick="closePopupemail()">&times;</span>
+		
+		<table border="0">
+		<tr>
+		<td style="padding: 20px; width: 50%; vertical-align: top;">
+		<h2 style="margin-bottom: 20px; text-align: center; color: #f1f1f1; font-family: 'Century Gothic', sans-serif;">Send a message</h2>
+						<div>
+							<form name="form1" method="post" action="mailto:nuramiraraihanaa.gmail.com">
+								<div style="margin-bottom: 15px;">
+									<label for="first-name"><strong>Name:</strong></label>
+									<input type="text" id="first-name" name="name" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="phone"><strong>Phone:</strong></label>
+									<input type="text" id="phone" name="phone" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+									<div style="margin-bottom: 15px;">
+									<label for="email"><strong>Email:</strong></label>
+									<input type="text" id="email" name="email" style="width: calc(100% - 10px);">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="state"><strong>Your Current State:</strong></label>
+									<select id="state" name="state" style="width: 100%;">
+										<option value="KL">Kuala Lumpur</option>
+										<option value="Sel">Selangor</option>
+										<option value="Ter">Terengganu</option>
+										<option value="PP">Pulau Pinang</option>
+										<option value="Per">Perak</option>
+										<option value="Joh">Johor</option>
+										<option value="Ked">Kedah</option>
+										<option value="Pah">Pahang</option>
+										<option value="Sar">Sarawak</option>
+										<option value="Sab">Sabah</option>
+										<option value="N. Sem">Negeri Sembilan</option>
+										<option value="Kel">Kelantan</option>
+										<option value="Mel">Melaka</option>
+										<option value="Per">Perlis</option>
+									</select>
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="subject"><strong>Subject:</strong></label><br>
+									<textarea id="subject" name="subject" rows="5" style="width: 100%;"></textarea>
+								</div>
+								<div style="text-align: center;">
+									<input id="submit" name="submit" type="submit" value="Submit" style="
+										background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+									">
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</div>
+			</div>
+			</div>
+			</div>
+		</header>
+		
+		<div id="news" style="
+			  background-color: #f1efe8;
+			  border: 1px solid #000;
+			  width: 1100px;
+			  height: 200px;
+			  margin: 90px auto 0 auto; /* adds space from header */
+			  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+			  border-radius: 8px;
+			  overflow: hidden;
+			  font-family: 'Cabin Condensed';
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			">
+
+			  <svg viewBox="0 0 100 20" style="font-weight: bold; max-width: 800px; height: auto; display: block; margin: 0 auto;">
+				<defs>
+				  <linearGradient id="gradient">
+					<stop offset="0%" stop-color="#181a3f" />
+				  </linearGradient>
+				  <pattern id="wave" x="0" y="-0.5" width="100%" height="100%" patternUnits="userSpaceOnUse">
+					<path 
+					  d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" 
+					  fill="url(#gradient)">
+					  <animateTransform
+						attributeName="transform"
+						begin="0s"
+						dur="1.5s"
+						type="translate"
+						from="0,0"
+						to="40,0"
+						repeatCount="indefinite" />
+					</path>
+				  </pattern>
+				</defs>
+				<text 
+				  text-anchor="middle" 
+				  x="50" 
+				  y="15" 
+				  font-size="20" 
+				  fill="#181a3f" 
+				  fill-opacity="0.1">NEWS</text>
+				<text 
+				  text-anchor="middle" 
+				  x="50" 
+				  y="15" 
+				  font-size="20" 
+				  fill="url(#wave)" 
+				  fill-opacity="1">NEWS</text>
+			  </svg>
+
+			</div>
+
+		
+		<!-----News secton-------------------->
+		<section class="news-section">
+		  <h1 class="news-title">The Orbit Report: Space News & Discoveries</h1>
+
+		  <!-- News Item 1 -->
+		  <div class="news-item">
+			<img
+			  src="image/news4.jpg"
+			  alt="Artemis rocket launch"
+			  class="news-img"
+			/>
+			<div class="news-content">
+			  <a
+				href="https://www.bbc.com/news/articles/c5yd4z15r54o"
+				class="news-heading"
+				target="_blank"
+				rel="noopener noreferrer"
+			  >
+				Seven planets to be visible in night sky for last time until 2040
+			  </a>
+			  <p class="news-meta">4 MIN READ • BBC News • May 2025</p>
+			  <p class="news-excerpt">
+				NASA’s Artemis programme, aiming to return humans to the Moon, takes another step forward as contracts are awarded and astronauts ramp up mission training ahead of the first crewed lunar missions in over 50 years...
+			  </p>
+			</div>
+		  </div>
+		  
+		  <!-- News Item 2 -->
+		  <div class="news-item">
+			<img
+			  src="https://www.nasa.gov/wp-content/uploads/2025/05/54492396655-8b425c4045-k.jpg?w=600"
+			  alt="Astronaut image"
+			  class="news-img"
+			/>
+			<div class="news-content">
+			  <a
+				href="https://www.nasa.gov/news-release/nasa-international-astronauts-address-students-from-new-york-ohio/"
+				class="news-heading"
+				target="_blank"
+				rel="noopener noreferrer"
+			  >
+				NASA, International Astronauts Address Students from New York, Ohio
+			  </a>
+			  <p class="news-meta">2 MIN READ</p>
+			  <p class="news-excerpt">
+				NASA astronaut Nichole Ayers and JAXA astronaut Takuya Onishi will
+				answer prerecorded questions submitted by students from New York and
+				Ohio aboard the International Space Station...
+			  </p>
+			</div>
+		  </div>
+
+		  <!-- News Item 3 -->
+		  <div class="news-item">
+			<img
+			  src="https://www.nasa.gov/wp-content/uploads/2024/08/meatball-w-black-background.webp?w=600"
+			  alt="NASA Logo"
+			  class="news-img"
+			/>
+			<div class="news-content">
+			  <a
+				href="https://www.nasa.gov/news-release/nasa-awards-launch-service-task-order-for-asperas-galaxy-mission/"
+				class="news-heading"
+				target="_blank"
+				rel="noopener noreferrer"
+			  >
+				NASA Awards Launch Service Task Order for Aspera’s Galaxy Mission
+			  </a>
+			  <p class="news-meta">2 MIN READ • News Release</p>
+			  <p class="news-excerpt">
+				NASA has selected Rocket Lab USA Inc. of Long Beach, California, to launch
+				the agency’s Aspera mission, a SmallSat to study galaxy formation and evolution.
+				The mission will provide new insights into how the universe works...
+			  </p>
+			</div>
+		  </div>
+		  
+		  
+		  <!-- News Item 4 -->
+		  <div class="news-item">
+			<img
+			  src="image/news1.jpg"
+			  alt="Moon Construction"
+			  class="news-img"
+			/>
+			<div class="news-content">
+			  <a
+				href="https://www.nasa.gov/news-release/nasa-enables-construction-technology-for-moon-and-mars-exploration/"
+				class="news-heading"
+				target="_blank"
+				rel="noopener noreferrer"
+			  >
+				NASA Enables Construction Technology for Moon and Mars Exploration
+			  </a>
+			  <p class="news-meta">5 MIN READ • Article • 3 days ago</p>
+			  <p class="news-excerpt">
+				NASA is supporting technologies that could help build infrastructure on the Moon and Mars, enabling long-term exploration by astronauts and sustainable human presence in space...
+			  </p>
+			</div>
+		  </div>
+		  
+		  
+		  <!-- News Item 5 -->
+		  <div class="news-item">
+			<img
+			  src="image/news5.jpg"
+			  alt="Artemis rocket launch"
+			  class="news-img"
+			/>
+			<div class="news-content">
+			  <a
+				href="https://www.cbsnews.com/news/k2-18b-planet-life-evidence-scientists/"
+				class="news-heading"
+				target="_blank"
+				rel="noopener noreferrer"
+			  >
+				Scientists find "strongest evidence yet" of life on distant planet K2-18b: "This could be the tipping point"
+			  </a>
+			  <p class="news-meta">2 MIN READ • CBS News • APRIL 2025</p>
+			  <p class="news-excerpt">
+				Astronomers announced Thursday that they had detected the most promising "hints" of potential life on a planet beyond our solar system, though other scientists expressed skepticism.
+			  </p>
+			</div>
+		  </div>
+		  
+		  <!-- News Item 6 -->
+		  <div class="news-item">
+			<img
+			  src="image/news6.jpg"
+			  alt="Artemis rocket launch"
+			  class="news-img"
+			/>
+			<div class="news-content">
+			  <a
+				href="https://www.cbsnews.com/news/key-facts-asteroid-could-hit-earth-2032-european-space-agency-expert/"
+				class="news-heading"
+				target="_blank"
+				rel="noopener noreferrer"
+			  >
+				Expert shares key facts about asteroid that could hit Earth in 2032
+			  </a>
+			  <p class="news-meta">4 MIN READ • CBS News • FEBRUARY 2025</p>
+			  <p class="news-excerpt">
+				An asteroid capable of flattening a mid-sized city could potentially collide with Earth eight years from now, as its orbit around the sun briefly intersects the path of our planet.
+			  </p>
+			</div>
+		  </div>
+		</section>
+
+	
+	
+	
+	
+	
+	<!---------------Footer----------------->
+	<footer>
+		<div class="container-foot">
+			<div class="leftBox">
+				<a href="#" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<p>Our mission is to help young learners explore and understand the galaxy in a fun, easy, and stress-free way. We aim to make learning about space exciting and enjoyable, so every student can gain knowledge with a smile.</p>
+				<ul class="social-media">
+					<li><a href="#"><i class='bx bxl-instagram-alt'></i></a></li>
+					<li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+					<li><a href="#"><i class='bx bxl-tiktok'></i></a></li>
+				</ul>
+			</div>
+		
+			<div class="centerBox">
+				<h3 class="title">Quick Links</h3>
+				<ul class="quick-menu">
+					<li class="lilink"><a href="home.html" class="nav-item">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+			</div>
+			
+			<div class="centerBox">
+				<h3 class="title">Contact Us</h3>
+					<ul class="info">
+					  <li>
+						<a href="#"><i class='bx bxs-phone'></i> +60 19-836-7334</a>
+					  </li>
+					  <li>
+						<a href="#"><i class='bx bxs-envelope'></i> kidtopia@gmail.com</a>
+					  </li>
+					</ul>
+			</div>
+		</div>
+	</footer>
+	
+	<!---------------CopyRight----------------->
+	<div class="copyRight"> 
+	  <p>Copyright &copy; 2025 by kidtopia || All Rights Reserved.</p>
+	  <a href="#news" style="
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: var(--hover-color);
+		padding: 10px;
+		color: #000;
+		text-decoration: none;
+	  ">
+		<i class="bx bx-up-arrow-alt"></i>
+	  </a>
+	</div>
+
+
+	<script>
+	function togglePopup() {
+    const overlay = document.getElementById('popup-overlayemail');
+    if (overlay.style.display === "none" || !overlay.style.display) {
+        overlay.style.display = "flex";
+    } else {
+        overlay.style.display = "none";
+    }
+}
+
+function showPopup() {
+    document.getElementById('popupemailform').style.display = 'flex';
+}
+
+function closePopupemail() {
+    document.getElementById('popupemailform').style.display = 'none';
+}
+
+// Add event listener for the close button
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.querySelector('.close-btn');
+    closeBtn.addEventListener('click', closePopup);
+});
+</script>
+
+	<script>
+	  const currentPage = location.pathname.split("/").pop(); // e.g., 'news.html'
+	  document.querySelectorAll("header .nav-item").forEach(link => {
+		if (link.getAttribute("href") === currentPage) {
+		  link.classList.add("active");
+		}
+	  });
+	</script>
+	
+	<!---------------Scroll animation----------------->
+	<script>
+		const observer = new IntersectionObserver((entries)=>{
+			entries.forEach((entry)=>{
+				if(entry.isIntersecting){
+					entry.target.classList.add("show-items");
+				}else{
+					entry.target.classList.remove("show-items");
+				}
+			});
+		});
+			
+		const scrollLeft = document.querySelectorAll(".scroll-left");
+		scrollLeft.forEach((el)=>observer.observe(el));
+		
+		const scrollRight = document.querySelectorAll(".scroll-right");
+		scrollRight.forEach((el)=>observer.observe(el));
+		
+		const scrollTop = document.querySelectorAll(".scroll-top");
+		scrollTop.forEach((el)=>observer.observe(el));
+		
+		const scrollBottom = document.querySelectorAll(".scroll-bottom");
+		scrollBottom.forEach((el)=>observer.observe(el));
+	</script>
+	
+
+</body>
+</html>

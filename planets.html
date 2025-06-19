@@ -1,0 +1,585 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planets</title>
+	<link rel="icon" sizes="16x16" href="image/icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	
+	<style>
+	.popup-overlayemail {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+}
+
+.popup-outside {
+margin: 20px auto;
+border-collapse: collapse; 
+max-width: 900px; 
+width: 100%; 
+background-color: #f1f1f1; 
+border-radius: 10px; 
+padding: 20px;
+}
+
+		.popup-contentemail {
+		background-color: #918991; 
+		width: 100%;
+		border-radius: 8px; 
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+		font-family: 'Century Gothic', sans-serif;
+		}
+
+		buttonemail {
+		background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+		}
+
+		.trigger-buttonemail {
+			cursor: pointer;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 7px;
+			right: 27px;
+			font-size: 50px;
+			font-weight: bold;
+			color: white;
+			cursor: pointer;
+			padding: 5px;
+			z-index: 1001; 
+		}
+
+		.close-btn:hover {
+			color: #918991;
+		}
+</style>
+
+</head>
+
+		<body>
+		
+		<!-- Background Music -->
+		<audio id="bgMusic" autoplay muted loop>
+		  <source src="sound/space.mp3" type="audio/mpeg">
+		</audio>
+		
+		<header>
+			<a href="home.html" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<ul class="navlist">
+					<li class="lilink"><a href="home.html" class="nav-item">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item active">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+				
+				<div class="right-side">
+<buttonemail onclick="showPopup()" class="trigger-buttonemail">Reach Us!</buttonemail>
+	<div id="popupemailform" class="popup-overlayemail">
+	<div class="popup-outside">
+	<div class="popup-contentemail">
+	<span class="close-btn" onclick="closePopupemail()">&times;</span>
+		
+		<table border="0">
+		<tr>
+		<td style="padding: 20px; width: 50%; vertical-align: top;">
+		<h2 style="margin-bottom: 20px; text-align: center; color: #f1f1f1; font-family: 'Century Gothic', sans-serif;">Send a message</h2>
+						<div>
+							<form name="form1" method="post" action="mailto:nuramiraraihanaa.gmail.com">
+								<div style="margin-bottom: 15px;">
+									<label for="first-name"><strong>Name:</strong></label>
+									<input type="text" id="first-name" name="name" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="phone"><strong>Phone:</strong></label>
+									<input type="text" id="phone" name="phone" style="width: calc(100% - 10px); margin-right: 10px;">
+								</div>
+									<div style="margin-bottom: 15px;">
+									<label for="email"><strong>Email:</strong></label>
+									<input type="text" id="email" name="email" style="width: calc(100% - 10px);">
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="state"><strong>Your Current State:</strong></label>
+									<select id="state" name="state" style="width: 100%;">
+										<option value="KL">Kuala Lumpur</option>
+										<option value="Sel">Selangor</option>
+										<option value="Ter">Terengganu</option>
+										<option value="PP">Pulau Pinang</option>
+										<option value="Per">Perak</option>
+										<option value="Joh">Johor</option>
+										<option value="Ked">Kedah</option>
+										<option value="Pah">Pahang</option>
+										<option value="Sar">Sarawak</option>
+										<option value="Sab">Sabah</option>
+										<option value="N. Sem">Negeri Sembilan</option>
+										<option value="Kel">Kelantan</option>
+										<option value="Mel">Melaka</option>
+										<option value="Per">Perlis</option>
+									</select>
+								</div>
+								<div style="margin-bottom: 15px;">
+									<label for="subject"><strong>Subject:</strong></label><br>
+									<textarea id="subject" name="subject" rows="5" style="width: 100%;"></textarea>
+								</div>
+								<div style="text-align: center;">
+									<input id="submit" name="submit" type="submit" value="Submit" style="
+										background: linear-gradient(180deg,#70efbf 0, #21e69a 100%);
+		height: 28px;
+		line-height: 28px;
+		border-radius: 5px;
+		padding: 0 20px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		transition: all .3s ease;
+		white-space: nowrap;
+		display:inline-block;
+		color: #000;
+		cursor: pointer; 
+									">
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</div>
+			</div>
+			</div>
+			</div>
+		</header>
+
+		<!-- Slideshow Section -->
+		<section id="planets" class="slideshow-container">
+			<div class="slideshow">
+				<img src="image/slide3.png" class="slide fade" alt="">
+				<img src="image/slide1.png" class="slide fade" alt="">
+				<img src="image/slide4.png" class="slide fade" alt="">
+				<img src="image/slide2.png" class="slide fade" alt="">
+			</div>
+
+			<!-- Navigation Buttons -->
+			<a class="prev" onclick="changeSlide(-1)">❮</a>
+			<a class="next" onclick="changeSlide(1)">❯</a>
+		</section>
+		
+
+		<!-- Video Section -->
+		<section class="video-section">
+		  <div class="video-container">
+			<h2 class="section-title" style="color: #302f32">Explore the Solar System in Action 🚀</h2>
+			<div class="video-frame">
+			  <video id="mainVideo" controls>
+				<source src="video/video1.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			  </video>
+			</div>
+		  </div>
+		</section>
+
+
+		<!------------planet section--------------->
+		<section class="planet-info">
+			<div class="planet scroll-right">
+				<img src="image/1-mercury.png" alt="">
+				<div class="planet-text">
+					<h2>Mercury</h2>
+					<p>Mercury, the <b>smallest</b> planet in our solar system and <b>the closest to the Sun</b>, is only slightly larger than Earth's Moon.</p>
+					<p>The Sun would appear more than three times as large from the surface of Mercury as it does from Earth, and the sunlight would be up to seven times brighter.</p>
+		
+				</div>
+			</div>
+
+			<div class="planet reverse scroll-left">
+				<img src="image/2-venus.png" alt="">
+				<div class="planet-text">
+					<h2>Venus</h2>
+					<p>Venus is Earth's <b>closest</b> planetary neighbor and the<b>second planet from the Sun.</b> It is sometimes referred to as Earth's twin due to its size and density.</p>
+					<p>Even though Mercury is closest to the Sun, Venus is <b>the hottest planet in our solar system;</b> its surface temperature is approximately 475 degrees Celsius.</p>
+				</div>
+			</div>
+
+			<div class="planet scroll-right">
+				<img src="image/3-earth.png" alt="Earth">
+				<div class="planet-text">
+					<h2>Earth</h2>
+					<p>Earth is <b>our home planet</b>, the third planet from the Sun. It's composed of various elements, primarily <b>rock</b> and <b>water</b>, and its atmosphere is the only place we know of that can sustain and <b>support life</b>.</p>
+				</div>
+			</div>
+			
+			<div class="planet reverse scroll-left">
+				<img src="image/4-mars.png" alt="">
+				<div class="planet-text">
+					<h2>Mars</h2>
+					<p>Mars, often called the <b>"Red Planet"</b> is the fourth planet from the Sun in our solar system.</p>
+					<p>Mars has a thin atmosphere primarily composed of <b>carbon dioxide</b> and <b>experiences extreme temperature fluctuations</b>. Along with having <b>seasons</b>, <b>polar ice caps</b>,<b>canyons</b>, and <b>extinct volcanoes</b>, Mars is <b>dynamic</b>.</p>
+				</div>
+			</div>
+			
+			<div class="planet scroll-right scroll-left">
+				<img src="image/5-jupiter.png" alt="Earth">
+				<div class="planet-text">
+					<h2>Jupiter</h2>
+					<p>Jupiter is the <b>largest</b> planet in our solar system. It's recognized for its immense size, with a diameter over 11 times that of Earth.</p>
+					<p>This gas giant has a powerful magnetic field, visible storms like the Great Red Spot, and a system of moons, the four largest of which are known as the Galilean moons.</p>
+				</div>
+			</div>
+			
+			<div class="planet reverse scroll-left">
+				<img src="image/6-saturn.png" alt="">
+				<div class="planet-text">
+					<h2>Saturn</h2>
+					<p>Often called the <b>jewel</b> of the solar system, is the <b>second-largest</b> planet and is known for its beautiful and prominent ring system.</p>
+					<p>Saturn is a gas giant primarily composed of hydrogen and helium. Its rings are made up of countless particles of <b>ice</b> and <b>dust</b>, creating a breathtaking sight when viewed.</p>
+				</div>
+			</div>
+			
+			<div class="planet scroll-right">
+				<img src="image/7-uranus.png" alt="Earth">
+				<div class="planet-text">
+					<h2>Uranus</h2>
+					<p>The <b>seventh</b> planet from the Sun is Uranus. Like Jupiter and Saturn, Uranus has an atmosphere composed primarily of <b>hydrogen</b> and <b>helium</b>, but it also contains <b>methane</b>.</p>
+				</div>
+			</div>
+			
+			<div class="planet reverse scroll-left">
+				<img src="image/8-neptune.png" alt="">
+				<div class="planet-text">
+					<h2>Neptune</h2>
+					<p>Neptune, the <b>eighth</b> planet in our solar system, is primarily known for its <b>bluish hue </b>and is recognized as an <b>"ice giant"</b> due to its composition of <b>icy substances</b>.</p>
+					<p>It's the most distant planet in our solar system. The planet has <b>14 known moons</b>, with Triton being the <b>largest</b> and most <b>well-known</b> among them. </p>
+				</div>
+			</div>
+		</section>
+		
+
+		<!-- Mnemonic Section with Sound -->
+		<section class="mnemonic-game">
+		  <h2 class="mnemonic-title">🪐 Fun Way to Remember Planet Names!</h2>
+		  <p class="mnemonic-subtitle">Click each planet to reveal the special word!</p>
+
+		  <audio id="clickSound" src="sound/click.mp3" preload="auto"></audio>
+
+		  <div class="planet-cards">
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Mercury</div>
+			  <div class="flip-card-back">My</div>
+			</div>
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Venus</div>
+			  <div class="flip-card-back">Very</div>
+			</div>
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Earth</div>
+			  <div class="flip-card-back">Educated</div>
+			</div>
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Mars</div>
+			  <div class="flip-card-back">Mothers</div>
+			</div>
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Jupiter</div>
+			  <div class="flip-card-back">Just</div>
+			</div>
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Saturn</div>
+			  <div class="flip-card-back">Serve</div>
+			</div>
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Uranus</div>
+			  <div class="flip-card-back">Us</div>
+			</div>
+			<div class="flip-card-inner" onclick="flipCard(this)">
+			  <div class="flip-card-front">Neptune</div>
+			  <div class="flip-card-back">Noodles</div>
+			</div>
+		  </div>
+		</section>
+
+
+		
+		<audio id="sound-mercury" src="sound/pop.mp3" preload="auto"></audio>
+		<audio id="sound-venus" src="sound/pop.mp3" preload="auto"></audio>
+		<audio id="sound-earth" src="sound/pop.mp3" preload="auto"></audio>
+		<audio id="sound-mars" src="sound/pop.mp3" preload="auto"></audio>
+		<audio id="sound-jupiter" src="sound/pop.mp3" preload="auto"></audio>
+		<audio id="sound-saturn" src="sound/pop.mp3" preload="auto"></audio>
+		<audio id="sound-uranus" src="sound/pop.mp3" preload="auto"></audio>
+		<audio id="sound-neptune" src="sound/pop.mp3" preload="auto"></audio>
+		<!-- Add for each planet -->
+
+
+
+	
+	
+	
+	
+	
+	<!---------------Footer----------------->
+	<footer>
+		<div class="container-foot">
+			<div class="leftBox">
+				<a href="#" class="logo"><img src="image/logo.png" alt="">Kidtopia</a>
+				<p>Our mission is to help young learners explore and understand the galaxy in a fun, easy, and stress-free way. We aim to make learning about space exciting and enjoyable, so every student can gain knowledge with a smile.</p>
+				<ul class="social-media">
+					<li><a href="#"><i class='bx bxl-instagram-alt'></i></a></li>
+					<li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+					<li><a href="#"><i class='bx bxl-tiktok'></i></a></li>
+				</ul>
+			</div>
+		
+			<div class="centerBox">
+				<h3 class="title">Quick Links</h3>
+				<ul class="quick-menu">
+					<li class="lilink"><a href="home.html" class="nav-item">Home</a></li>
+					<li class="lilink"><a href="planets.html" class="nav-item active">Planets</a></li>
+					<li class="lilink"><a href="news.html" class="nav-item">News</a></li>
+					<li class="lilink"><a href="quiz.html" class="nav-item">Quiz</a></li>
+					<li class="lilink"><a href="about.html" class="nav-item">About Us</a></li>
+				</ul>
+			</div>
+			
+			<div class="centerBox">
+				<h3 class="title">Contact Us</h3>
+					<ul class="info">
+					  <li>
+						<a href="#"><i class='bx bxs-phone'></i> +60 19-836-7334</a>
+					  </li>
+					  <li>
+						<a href="#"><i class='bx bxs-envelope'></i> kidtopia@gmail.com</a>
+					  </li>
+					</ul>
+			</div>
+		</div>
+	</footer>
+	
+	<!---------------CopyRight----------------->
+	<div class="copyRight"> 
+	  <p>Copyright &copy; 2025 by kidtopia || All Rights Reserved.</p>
+	  <a href="#planets" style="
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: var(--hover-color);
+		padding: 10px;
+		color: #000;
+		text-decoration: none;
+	  ">
+		<i class="bx bx-up-arrow-alt"></i>
+	  </a>
+	</div>
+
+
+		<script>
+	function togglePopup() {
+    const overlay = document.getElementById('popup-overlayemail');
+    if (overlay.style.display === "none" || !overlay.style.display) {
+        overlay.style.display = "flex";
+    } else {
+        overlay.style.display = "none";
+    }
+}
+
+function showPopup() {
+    document.getElementById('popupemailform').style.display = 'flex';
+}
+
+function closePopupemail() {
+    document.getElementById('popupemailform').style.display = 'none';
+}
+
+// Add event listener for the close button
+document.addEventListener('DOMContentLoaded', function() {
+    const closeBtn = document.querySelector('.close-btn');
+    closeBtn.addEventListener('click', closePopup);
+});
+</script>
+	
+	<script>
+	  const currentPage = location.pathname.split("/").pop(); // e.g., 'planets.html'
+	  document.querySelectorAll("header .nav-item").forEach(link => {
+		if (link.getAttribute("href") === currentPage) {
+		  link.classList.add("active");
+		}
+	  });
+	</script>
+
+
+	<!---------------Scroll animation----------------->
+	<script>
+		const observer = new IntersectionObserver((entries)=>{
+			entries.forEach((entry)=>{
+				if(entry.isIntersecting){
+					entry.target.classList.add("show-items");
+				}else{
+					entry.target.classList.remove("show-items");
+				}
+			});
+		});
+			
+		const scrollLeft = document.querySelectorAll(".scroll-left");
+		scrollLeft.forEach((el)=>observer.observe(el));
+		
+		const scrollRight = document.querySelectorAll(".scroll-right");
+		scrollRight.forEach((el)=>observer.observe(el));
+		
+		const scrollTop = document.querySelectorAll(".scroll-top");
+		scrollTop.forEach((el)=>observer.observe(el));
+		
+		const scrollBottom = document.querySelectorAll(".scroll-bottom");
+		scrollBottom.forEach((el)=>observer.observe(el));
+	</script>
+	
+	<script>
+		let slideIndex = 0;
+		const slides = document.querySelectorAll(".slide");
+
+		function showSlide(n) {
+			slides.forEach(slide => {
+				slide.style.display = "none";
+				if (slide.tagName === "VIDEO") {
+					slide.pause(); // pause videos when hidden
+				}
+			});
+
+			slideIndex = (n + slides.length) % slides.length;
+
+			const currentSlide = slides[slideIndex];
+			currentSlide.style.display = "block";
+			if (currentSlide.tagName === "VIDEO") {
+				currentSlide.play(); // play video when shown
+			}
+		}
+
+		function changeSlide(n) {
+			showSlide(slideIndex + n);
+		}
+
+		// Initialize
+		showSlide(slideIndex);
+	</script>
+	
+	<script>
+  const soundMap = {
+    '1-mercury.png': 'sound-mercury',
+    '2-venus.png': 'sound-venus',
+	'3-earth.png': 'sound-earth',
+	'4-mars.png': 'sound-mars',
+	'5-jupiter.png': 'sound-jupiter',
+	'6-saturn.png': 'sound-saturn',
+	'7-uranus.png': 'sound-uranus',
+	'8-neptune.png': 'sound-neptune',
+    // Add more as needed
+  };
+
+  const planetImgs = document.querySelectorAll('.planet img');
+
+  planetImgs.forEach(img => {
+    img.addEventListener('mouseenter', () => {
+      const soundId = soundMap[img.getAttribute('src').split('/').pop()];
+      if (soundId) {
+        const audio = document.getElementById(soundId);
+        audio.currentTime = 0;
+        audio.play();
+      }
+    });
+  });
+</script>
+<script>
+  function flipCard(card) {
+    card.classList.toggle("flipped");
+    const sound = document.getElementById("clickSound");
+    if (sound) {
+      sound.currentTime = 0;
+      sound.play();
+    }
+  }
+</script>
+
+	<script>
+  const bgMusic = document.getElementById('bgMusic');
+  const video = document.getElementById('mainVideo');
+
+  // Enable audio after user interaction (needed for autoplay with sound)
+  window.addEventListener('click', () => {
+    bgMusic.muted = false;
+    bgMusic.volume = 0.7; // Set volume (0 = silent, 1 = full)
+    bgMusic.play();
+  }, { once: true });
+
+  let fadeInterval;
+
+  function fadeOutAudio(audio, targetVolume = 0.2, duration = 1000) {
+    clearInterval(fadeInterval);
+    const step = 0.05;
+    const steps = Math.abs(audio.volume - targetVolume) / step;
+    const intervalTime = duration / steps;
+
+    fadeInterval = setInterval(() => {
+      if (audio.volume > targetVolume + step) {
+        audio.volume = Math.max(audio.volume - step, targetVolume);
+      } else {
+        audio.volume = targetVolume;
+        clearInterval(fadeInterval);
+      }
+    }, intervalTime);
+  }
+
+  function fadeInAudio(audio, targetVolume = 1.0, duration = 1000) {
+    clearInterval(fadeInterval);
+    const step = 0.05;
+    const steps = Math.abs(audio.volume - targetVolume) / step;
+    const intervalTime = duration / steps;
+
+    fadeInterval = setInterval(() => {
+      if (audio.volume < targetVolume - step) {
+        audio.volume = Math.min(audio.volume + step, targetVolume);
+      } else {
+        audio.volume = targetVolume;
+        clearInterval(fadeInterval);
+      }
+    }, intervalTime);
+  }
+
+  // Fade out music when video plays
+  video.addEventListener('play', () => {
+    fadeOutAudio(bgMusic, 0.2, 1000); // to 0.2 volume in 1 second
+  });
+
+  // Fade in music when video pauses or ends
+  video.addEventListener('pause', () => {
+    fadeInAudio(bgMusic, 1.0, 1000);
+  });
+
+  video.addEventListener('ended', () => {
+    fadeInAudio(bgMusic, 1.0, 1000);
+  });
+</script>
+
+
+
+
+</body>
+</html>
